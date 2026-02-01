@@ -1,6 +1,9 @@
 # novo-cnpj
 Novo CNPJ em C++ para Unicode e EBCDIC.
 
+## Requisitos
+CMake e C++ 23. Mas é facilmente adaptável para versões anteriores.
+
 ## Como usar?
 ```cpp
 #include <print>
