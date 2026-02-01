@@ -33,4 +33,5 @@ git clone https://github.com/JordanGaspar/novo-cnpj.git
 No seu CMakeLists.txt:
 ```CMake
 add_subdirectory(novo-cnpj)
+target_link_libraries(${PROJECT_NAME} PRIVATE CNPJ)
 ```
