@@ -1,5 +1,4 @@
-add_executable(Debuging main.cpp)
-target_link_libraries(Debuging PRIVATE ${PROJECT_NAME})
-set_target_properties(Debuging PROPERTIES CXX_STANDARD 23)
+add_executable(Debugging main.cpp)
+target_link_libraries(Debugging PRIVATE CNPJ)
 
-add_test(Debuging ${CMAKE_CURRENT_BINARY_DIR}/test/Debuging)
+add_test(NAME DebuggingTest COMMAND test/Debugging)

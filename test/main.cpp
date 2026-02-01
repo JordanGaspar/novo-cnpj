@@ -23,12 +23,32 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include <CNPJ.h>
+#include <exception>
 #include <print>
 
-int main() {
-	CNPJ cnpj;
+using namespace std;
 
-	std::print("{}\n", cnpj.validar("12.ABC.345/01DE-35"));
+int main() {
+
+	try {
+		CNPJ cnpj;
+
+		auto output = [&](const char *value) {
+			print(R"(Value: "{}" is {}.)"
+				  "\n",
+				  value, cnpj.validar(value));
+		};
+
+		output("12.ABC.345/01DE-35");
+		output("lixolixolixolixoli");
+		output("çççççççççççççççççç");
+		output("çççççççççççççç");
+		output("\n\r\n\r\n\r\0\0\r");
+		output("00.000.000/0001-91");
+
+	} catch (const std::exception &e) {
+		print("{}\n", e.what());
+	}
 
 	return 0;
 }
