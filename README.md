@@ -23,4 +23,14 @@ class Objeto {
     }
   }
 };
-``
+```
+## Como Adicionar no seu projeto?
+
+```git
+git clone https://github.com/JordanGaspar/novo-cnpj.git
+```
+
+No seu CMakeLists.txt:
+```CMake
+add_subdirectory(novo-cnpj)
+```
