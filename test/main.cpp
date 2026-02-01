@@ -25,6 +25,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <CNPJ.h>
 #include <exception>
 #include <print>
+#include <sstream>
+#include <stdexcept>
 
 using namespace std;
 
@@ -33,21 +35,35 @@ int main() {
 	try {
 		CNPJ cnpj;
 
-		auto output = [&](const char *value) {
+		auto output = [&](const char *value, bool expected) {
+			bool result = cnpj.validar(value);
+
+			if (result != expected) {
+				stringstream stream;
+
+				print(
+					stream,
+					R"(Error: the value: "{}" expected "{}" but evaluated to "{}" instead!)",
+					value, expected, result);
+
+				throw runtime_error(stream.str());
+			}
+
 			print(R"(Value: "{}" is {}.)"
 				  "\n",
-				  value, cnpj.validar(value));
+				  value, result);
 		};
 
-		output("12.ABC.345/01DE-35");
-		output("lixolixolixolixoli");
-		output("çççççççççççççççççç");
-		output("çççççççççççççç");
-		output("\n\r\n\r\n\r\0\0\r");
-		output("00.000.000/0001-91");
+		output("12.ABC.345/01DE-35", true);
+		output("lixolixolixolixoli", false);
+		output("çççççççççççççççççç", false);
+		output("çççççççççççççç", false);
+		output("\n\r\n\r\n\r\0\0\r", false);
+		output("00.000.000/0001-91", true);
 
 	} catch (const std::exception &e) {
 		print("{}\n", e.what());
+		return 1;
 	}
 
 	return 0;

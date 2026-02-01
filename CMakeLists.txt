@@ -4,8 +4,6 @@ project(CNPJ LANGUAGES CXX)
 
 add_library(${PROJECT_NAME} SHARED source/CNPJ.cpp)
 
-set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 23)
-
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_23)
 
 target_include_directories(${PROJECT_NAME}
