@@ -23,6 +23,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include <CNPJ.h>
+#include <cstdlib>
 #include <exception>
 #include <print>
 #include <sstream>
@@ -63,8 +64,8 @@ int main() {
 
 	} catch (const std::exception &e) {
 		print("{}\n", e.what());
-		return 1;
+		return EXIT_FAILURE;
 	}
 
-	return 0;
+	return EXIT_SUCCESS;
 }

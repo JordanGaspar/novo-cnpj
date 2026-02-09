@@ -14,4 +14,5 @@ target_include_directories(${PROJECT_NAME}
 
 enable_testing()
 
+add_subdirectory(rest)
 add_subdirectory(test)
