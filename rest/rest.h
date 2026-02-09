@@ -15,7 +15,7 @@ class Rest {
 	impl *pimpl;
 
 public:
-	Rest(std::string_view port = "localhost", std::string_view service = "0",
+	Rest(std::string_view host = "localhost", std::string_view service = "0",
 		 std::string_view target = "/validar_cnpj");
 	~Rest();
 
